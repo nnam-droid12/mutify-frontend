@@ -1,0 +1,457 @@
+/* Global Styles */
+:root {
+  --primary-black: #000000;
+  --secondary-black: #121212;
+  --primary-yellow: #FFD700;
+  --secondary-yellow: #FFC300;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--primary-black);
+  color: var(--primary-yellow);
+  overflow-x: hidden;
+}
+
+.homepage {
+  background-color: var(--primary-black);
+  position: relative;
+}
+
+/* Animated Background */
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(100px);
+  animation: moveShape 20s infinite alternate;
+}
+
+.bg-shape-1 {
+  background-color: var(--primary-yellow);
+  width: 400px;
+  height: 400px;
+  top: -10%;
+  left: -10%;
+  animation-delay: -3s;
+}
+
+.bg-shape-2 {
+  background-color: var(--secondary-yellow);
+  width: 500px;
+  height: 500px;
+  bottom: -20%;
+  right: -15%;
+  animation-delay: -7s;
+}
+
+.bg-shape-3 {
+  background-color: var(--primary-yellow);
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 20%;
+  animation-delay: -2s;
+}
+
+.bg-shape-4 {
+  background-color: var(--secondary-yellow);
+  width: 250px;
+  height: 250px;
+  bottom: 30%;
+  left: -5%;
+  animation-delay: -5s;
+}
+
+.bg-shape-5 {
+  background-color: var(--primary-yellow);
+  width: 200px;
+  height: 200px;
+  top: 20%;
+  right: 10%;
+  animation-delay: -9s;
+}
+
+@keyframes moveShape {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100px) rotate(360deg);
+  }
+}
+
+
+/* Background Triangles */
+.background-triangles {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 500px solid transparent;
+  border-right: 500px solid transparent;
+}
+
+.triangle-1 {
+  border-bottom: 600px solid rgba(255, 200, 0, 1.0);
+  top: 10%;
+  right: -200px;
+  animation: moveTri1 10s ease-in-out infinite alternate;
+}
+
+.triangle-2 {
+  border-bottom: 500px solid rgba(255, 200, 0, 1.0);
+  top: 50%;
+  right: -100px;
+  animation: moveTri2 12s ease-in-out infinite alternate;
+}
+
+@keyframes moveTri1 {
+  0% {
+    transform: rotate(0deg) translateX(0);
+  }
+  100% {
+    transform: rotate(10deg) translateX(50px);
+  }
+}
+
+@keyframes moveTri2 {
+  0% {
+    transform: rotate(0deg) translateX(0);
+  }
+  100% {
+    transform: rotate(-10deg) translateX(-50px);
+  }
+}
+
+
+/* Navbar */
+.homepage-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.homepage-logo {
+  color: var(--primary-yellow);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.homepage-nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.homepage-nav-links a {
+  color: var(--primary-yellow);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.homepage-nav-links a:hover {
+  color: var(--secondary-yellow);
+}
+
+/* Hero Section */
+.homepage-hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.homepage-hero-content {
+  max-width: 800px;
+  padding: 0 20px;
+  text-align: left;
+  position: relative;
+  z-index: 10;
+}
+
+.homepage-hero-title {
+  font-size: 4rem;
+  margin-bottom: 10px;
+  color: var(--primary-yellow);
+  animation: slideIn 1s forwards;
+}
+
+.homepage-hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--secondary-yellow);
+}
+
+.homepage-hero-cta {
+  background-color: var(--secondary-yellow);
+  color: var(--primary-black);
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.homepage-hero-cta:hover {
+  background-color: var(--primary-yellow);
+}
+
+/* Features Section */
+.homepage-features {
+  padding: 100px 50px;
+  background-color: var(--secondary-black);
+  position: relative;
+  z-index: 10;
+}
+
+.homepage-features-title {
+  text-align: center;
+  color: var(--primary-yellow);
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+}
+
+.homepage-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.homepage-feature-card {
+  background-color: var(--primary-black);
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid var(--secondary-yellow);
+  transition: transform 0.3s ease;
+}
+
+.homepage-feature-card:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 211, 0, 0.1);
+}
+
+.homepage-feature-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: var(--primary-yellow);
+}
+
+.homepage-feature-title {
+  color: var(--primary-yellow);
+  margin-bottom: 10px;
+}
+
+.homepage-feature-description {
+  color: var(--secondary-yellow);
+}
+
+/* Future Plans Section */
+.homepage-future-plans {
+  padding: 100px 50px;
+  background-color: var(--primary-black);
+  position: relative;
+  z-index: 10;
+}
+
+.homepage-future-plans-title {
+  text-align: center;
+  color: var(--primary-yellow);
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+}
+
+.homepage-future-plans-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.homepage-future-plan-card {
+  background-color: var(--secondary-black);
+  padding: 30px;
+  max-width: 400px;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid var(--secondary-yellow);
+  transition: transform 0.3s ease;
+}
+
+.homepage-future-plan-card:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 211, 0, 0.1);
+}
+
+.homepage-future-plan-title {
+  color: var(--primary-yellow);
+  margin-bottom: 15px;
+}
+
+.homepage-future-plan-description {
+  color: var(--secondary-yellow);
+}
+
+/* Pricing Section */
+.homepage-pricing {
+  padding: 100px 50px;
+  background-color: var(--secondary-black);
+  position: relative;
+  z-index: 10;
+}
+
+.homepage-pricing-title {
+  text-align: center;
+  color: var(--primary-yellow);
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+}
+
+.homepage-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.homepage-pricing-card {
+  background-color: var(--primary-black);
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid var(--secondary-yellow);
+  transition: transform 0.3s ease;
+}
+
+.homepage-pricing-card:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 211, 0, 0.1);
+}
+
+.homepage-pricing-tier {
+  color: var(--primary-yellow);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.homepage-pricing-amount {
+  color: var(--primary-yellow);
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.homepage-pricing-features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.homepage-pricing-features li {
+  color: var(--secondary-yellow);
+  margin-bottom: 10px;
+}
+
+.homepage-pricing-button {
+  background-color: var(--secondary-yellow);
+  color: var(--primary-black);
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.homepage-pricing-button:hover {
+  background-color: var(--primary-yellow);
+}
+
+/* Footer */
+.homepage-footer {
+  background-color: var(--primary-black);
+  padding: 30px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.homepage-footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.homepage-footer-links a {
+  color: var(--primary-yellow);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.homepage-footer-links a:hover {
+  color: var(--secondary-yellow);
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .homepage-features-grid,
+  .homepage-pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage-features-grid,
+  .homepage-pricing-grid,
+  .homepage-future-plans-container {
+    grid-template-columns: 1fr;
+  }
+
+  .homepage-navbar {
+    padding: 15px 20px;
+  }
+
+  .homepage-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .homepage-hero-subtitle {
+    font-size: 1.2rem;
+  }
+}
