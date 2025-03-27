@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RegisterBusiness from "./RegisterBusiness";
-import CreateReceipt from "./CreateReceipt"; 
+import CreateReceipt from "./CreateReceipt";
+import ReceiptsList from "./ReceiptsList";
+import ReceiptDetails from "./ReceiptDetails";
+import AdminAssistant from "./AdminAssistant"; // Import the AdminAssistant component
 import "./Dashboard.css";
 
-const UserDashboard = ({ accessToken }) => {
+const UserDashboard = () => {
   const [activeTab, setActiveTab] = useState("register-business");
+  const [selectedReceipt, setSelectedReceipt] = useState(null);
+  const [accessToken, setAccessToken] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      setAccessToken(token);
+    } else {
+      console.error("Access token is missing!");
+    }
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
@@ -41,14 +55,25 @@ const UserDashboard = ({ accessToken }) => {
             Admin Assistant
           </li>
         </ul>
-        <button className="logout" onClick={handleLogout}>Logout</button>
+        <button className="logout" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
       <div className="dashboard-content">
         <main className="content">
           {activeTab === "register-business" && <RegisterBusiness accessToken={accessToken} />}
           {activeTab === "create-receipt" && <CreateReceipt accessToken={accessToken} />}
-          {activeTab === "all-receipts" && <div>All Receipts Component Placeholder</div>}
-          {activeTab === "admin-assistant" && <div>Admin Assistant Component Placeholder</div>}
+          {activeTab === "all-receipts" &&
+            (selectedReceipt ? (
+              <ReceiptDetails
+                receiptId={selectedReceipt}
+                accessToken={accessToken}
+                onBack={() => setSelectedReceipt(null)}
+              />
+            ) : (
+              <ReceiptsList accessToken={accessToken} onSelectReceipt={setSelectedReceipt} />
+            ))}
+          {activeTab === "admin-assistant" && <AdminAssistant accessToken={accessToken} />}
         </main>
       </div>
     </div>

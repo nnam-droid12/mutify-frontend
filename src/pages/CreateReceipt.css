@@ -1,49 +1,49 @@
 .create-receipt-container {
     width: 100%;
-    padding: 30px;
-  }
-  
-  .create-receipt-container h2 {
+    padding: 40px; /* More padding for spacing */
+}
+
+.create-receipt-container h2 {
     text-align: left;
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: 25px;
+    font-size: 26px;
     color: black;
-  }
-  
-  .create-receipt-container form {
+}
+
+.create-receipt-container form {
     display: flex;
     flex-direction: column;
-    max-width: 700px; /* Increase form width */
-  }
-  
-  .create-receipt-container input {
-    padding: 15px; /* Increase input size */
-    margin-bottom: 20px;
+    max-width: 800px; /* Increased form width for better layout */
+    gap: 15px; /* Adds space between fields */
+}
+
+.create-receipt-container input {
+    padding: 16px; /* Increased padding */
     border: 1px solid #000;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 6px;
+    font-size: 17px;
     width: 100%;
-  }
-  
-  .create-receipt-container button {
+}
+
+.create-receipt-container button {
     background-color: yellow;
     color: black;
-    padding: 15px;
+    padding: 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 16px;
-    width: 250px;
-  }
-  
-  .create-receipt-container button:hover {
+    font-size: 17px;
+    width: 270px; /* Slightly larger button */
+}
+
+.create-receipt-container button:hover {
     background-color: #ffd700;
-  }
-  
-  .message {
-    margin-top: 10px;
+}
+
+.message {
+    margin-top: 12px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 17px;
     color: black;
-  }
+}

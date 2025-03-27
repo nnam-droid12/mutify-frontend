@@ -3,9 +3,10 @@ import "./CreateReceipt.css";
 
 const CreateReceipt = ({ accessToken }) => {
   const [formData, setFormData] = useState({
+    businessId: "",
     customerName: "",
-    amount: "",
-    date: "",
+    items: "",
+    totalAmount: "",
   });
 
   const [message, setMessage] = useState("");
@@ -20,6 +21,13 @@ const CreateReceipt = ({ accessToken }) => {
     setLoading(true);
     setMessage("");
 
+    const formattedData = {
+      businessId: Number(formData.businessId), // Convert to number
+      customerName: formData.customerName,
+      items: formData.items.split(",").map((item) => item.trim()), // Convert to array
+      totalAmount: parseFloat(formData.totalAmount), // Convert to float
+    };
+
     try {
       const response = await fetch("https://mutify.onrender.com/api/v1/receipts/create-receipt", {
         method: "POST",
@@ -27,16 +35,16 @@ const CreateReceipt = ({ accessToken }) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formattedData),
       });
 
       if (!response.ok) {
         throw new Error("Failed to create receipt");
       }
 
-      const data = await response.json();
+      await response.json();
       setMessage("Receipt created successfully!");
-      setFormData({ customerName: "", amount: "", date: "" });
+      setFormData({ businessId: "", customerName: "", items: "", totalAmount: "" });
     } catch (error) {
       setMessage("Error creating receipt. Please try again.");
     } finally {
@@ -49,6 +57,14 @@ const CreateReceipt = ({ accessToken }) => {
       <h2>Create Receipt</h2>
       <form onSubmit={handleSubmit}>
         <input
+          type="number"
+          name="businessId"
+          placeholder="Business ID"
+          value={formData.businessId}
+          onChange={handleChange}
+          required
+        />
+        <input
           type="text"
           name="customerName"
           placeholder="Customer Name"
@@ -57,17 +73,19 @@ const CreateReceipt = ({ accessToken }) => {
           required
         />
         <input
-          type="number"
-          name="amount"
-          placeholder="Amount"
-          value={formData.amount}
+          type="text"
+          name="items"
+          placeholder="Items (comma-separated)"
+          value={formData.items}
           onChange={handleChange}
           required
         />
         <input
-          type="date"
-          name="date"
-          value={formData.date}
+          type="number"
+          step="0.01"
+          name="totalAmount"
+          placeholder="Total Amount"
+          value={formData.totalAmount}
           onChange={handleChange}
           required
         />

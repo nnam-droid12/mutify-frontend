@@ -1,0 +1,26 @@
+.admin-assistant {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  button {
+    background-color: #f4b400; /* Yellow */
+    color: #000;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .response-box {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    white-space: pre-wrap; /* Keeps formatting */
+  }

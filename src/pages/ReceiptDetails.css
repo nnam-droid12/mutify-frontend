@@ -1,0 +1,54 @@
+.receipt-details-container {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .receipt-details-container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .receipt-info {
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  .receipt-info p {
+    margin: 10px 0;
+    font-size: 20px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Adds spacing between buttons */
+    margin-top: 20px;
+  }
+  
+  .button-container button {
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 14px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .button-container button:hover {
+    background-color: #ffd700;
+  }
+  
+  @media (max-width: 600px) {
+    .button-container {
+      flex-direction: column; /* Stack buttons on smaller screens */
+      gap: 20px;
+    }
+  }
